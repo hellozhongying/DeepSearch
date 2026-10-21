@@ -23,7 +23,7 @@ Add focused `node:test` cases to `test/search.test.mjs` for changes to query val
 
 ## Commits & Pull Requests
 
-The initial commit uses an imperative subject (`Add initial implementation of HQ Search application`). Follow that style with short subjects such as `Adjust results page spacing`. Pull requests should explain the user-visible change, list checks run, and include before/after screenshots for visual changes; link an issue when one exists.
+The initial commit uses an imperative subject (`Add initial implementation of DeepSearch application`). Follow that style with short subjects such as `Adjust results page spacing`. Pull requests should explain the user-visible change, list checks run, and include before/after screenshots for visual changes; link an issue when one exists.
 
 ## Security & Configuration
 

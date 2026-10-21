@@ -254,5 +254,5 @@ export async function handleRequest(request, response) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  createServer(handleRequest).listen(port, () => console.log(`HQ Search: http://localhost:${port}`));
+  createServer(handleRequest).listen(port, () => console.log(`DeepSearch: http://localhost:${port}`));
 }

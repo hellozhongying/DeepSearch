@@ -1,8 +1,8 @@
-# HQ Search
+# DeepSearch
 
 **想找个网页，不必先穿过一屏广告。**
 
-HQ Search 是一个基于 [DeepSeek Search / Fetch API](https://api-docs.deepseek.com/zh-cn/guides/search/) 的轻量网页搜索项目。页面不插入广告，也不要求登录：输入关键词，直接看网页结果；需要细读时，可以在站内预览正文。
+DeepSearch 是一个基于 [DeepSeek Search / Fetch API](https://api-docs.deepseek.com/zh-cn/guides/search/) 的轻量网页搜索项目。页面不插入广告，也不要求登录：输入关键词，直接看网页结果；需要细读时，可以在站内预览正文。
 
 ## 主要功能
 

@@ -27,8 +27,7 @@ const previewBody = document.querySelector('#preview-body');
 
 const PAGE_SIZE = 10;
 const RESULT_LIMIT = 50;
-const qColors = ['#ea4335', '#fbbc05', '#4285f4', '#34a853'];
-const searchColors = ['#4285f4', '#ea4335', '#fbbc05', '#34a853', '#4285f4', '#ea4335'];
+const brandPalette = ['#ea4335', '#fbbc05', '#4285f4', '#34a853'];
 const emptyState = { query: '', range: 'all', lang: '', after: '', before: '', page: 1 };
 const rangeNames = { week: '近一周', month: '近一月', year: '近一年' };
 const langNames = { zh: '中文', en: 'English' };
@@ -388,6 +387,11 @@ function appendList(container, lines, index, tag, pattern) {
   return index;
 }
 
+function brandColor(index) {
+  if (index === 0) return '#4285f4';
+  return brandPalette[(index - 1) % brandPalette.length];
+}
+
 function pagerLetter(text, color) {
   const letter = document.createElement('span');
   letter.textContent = text;
@@ -417,8 +421,9 @@ function renderPager() {
   const logo = document.createElement('div');
   logo.className = 'pager-logo';
   if (state.page > 1) logo.append(pagerLink(state.page - 1, 'pager-chevron', '<'));
-  const mark = pagerLetter('H', '#4285f4');
+  const mark = document.createElement('div');
   mark.className = 'pager-h';
+  mark.append(pagerLetter('D', brandColor(0)), pagerLetter('e', brandColor(1)));
   logo.append(mark);
 
   const columns = document.createElement('div');
@@ -426,7 +431,7 @@ function renderPager() {
   for (let page = 1; page <= pages; page += 1) {
     const column = document.createElement('div');
     column.className = 'pager-column';
-    const letter = pagerLetter('q', qColors[(page - 1) % qColors.length]);
+    const letter = pagerLetter('e', brandColor(1 + page));
     letter.className = 'pager-q';
     if (page === state.page) {
       letter.classList.add('is-current');
@@ -460,7 +465,8 @@ function renderPager() {
   tail.className = 'pager-tail';
   const word = document.createElement('div');
   word.className = 'pager-word';
-  [...'Search'].forEach((char, index) => word.append(pagerLetter(char, searchColors[index])));
+  const tailStart = 2 + pages;
+  [...'pSearch'].forEach((char, index) => word.append(pagerLetter(char, brandColor(tailStart + index))));
   tail.append(word);
   if (state.page < pages) tail.append(pagerLink(state.page + 1, 'pager-label', '下一页'));
   logo.append(tail);
@@ -537,7 +543,7 @@ function showHome() {
   syncClearButton();
   filterStatus.textContent = '';
   status.textContent = '';
-  document.title = 'HQ Search';
+  document.title = 'DeepSearch';
 }
 
 function showShell() {
@@ -546,7 +552,7 @@ function showShell() {
   syncClearButton();
   document.body.classList.add('has-results');
   resultsPage.hidden = false;
-  document.title = `${state.query} - HQ Search`;
+  document.title = `${state.query} - DeepSearch`;
   syncControls();
 }
 
